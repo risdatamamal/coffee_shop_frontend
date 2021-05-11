@@ -44,7 +44,7 @@ class Transaction extends Equatable {
       [id, coffee, quantity, total, dateTime, status, user];
 }
 
-List<Transaction> mockTransactiions = [
+List<Transaction> mockTransactions = [
   Transaction(
     id: 1,
     coffee: manualBrew[1],

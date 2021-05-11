@@ -46,7 +46,9 @@ class _CoffeePageState extends State<CoffeePage> {
                         borderRadius: BorderRadius.circular(8),
                         image: DecorationImage(
                             image: NetworkImage(
-                                'https://i.pinimg.com/474x/8a/f4/7e/8af47e18b14b741f6be2ae499d23fcbe.jpg'),
+                                (context.bloc<UserCubit>().state as UserLoaded)
+                                    .user
+                                    .picturePath),
                             fit: BoxFit.cover)),
                   ),
                 ],
@@ -67,7 +69,21 @@ class _CoffeePageState extends State<CoffeePage> {
                                       ? defaultMargin
                                       : 0,
                                   right: defaultMargin),
-                              child: CoffeeCard(e),
+                              child: GestureDetector(
+                                  onTap: () {
+                                    Get.to(CoffeeDetailsPage(
+                                      transaction: Transaction(
+                                        coffee: e,
+                                        user: (context.bloc<UserCubit>().state
+                                                as UserLoaded)
+                                            .user,
+                                      ),
+                                      onBackButtonPressed: () {
+                                        Get.back();
+                                      },
+                                    ));
+                                  },
+                                  child: CoffeeCard(e)),
                             ))
                         .toList(),
                   ),
@@ -111,13 +127,27 @@ class _CoffeePageState extends State<CoffeePage> {
                     return Column(
                       children: coffees
                           .map((e) => Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                    defaultMargin, 0, defaultMargin, 16),
+                              padding: const EdgeInsets.fromLTRB(
+                                  defaultMargin, 0, defaultMargin, 16),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Get.to(CoffeeDetailsPage(
+                                    transaction: Transaction(
+                                      coffee: e,
+                                      user: (context.bloc<UserCubit>().state
+                                              as UserLoaded)
+                                          .user,
+                                    ),
+                                    onBackButtonPressed: () {
+                                      Get.back();
+                                    },
+                                  ));
+                                },
                                 child: CoffeeListItem(
                                   coffee: e,
                                   itemWidth: listItemWidth,
                                 ),
-                              ))
+                              )))
                           .toList(),
                     );
                   }),

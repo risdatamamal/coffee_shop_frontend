@@ -10,13 +10,13 @@ class OrderHistoryPage extends StatefulWidget {
 class _OrderHistoryPageState extends State<OrderHistoryPage> {
   int selectedIndex = 0;
 
-  List<Transaction> inProgress = mockTransactiions
+  List<Transaction> inProgress = mockTransactions
       .where((element) =>
           element.status == TransactionStatus.on_delivery ||
           element.status == TransactionStatus.pending)
       .toList();
 
-  List<Transaction> past = mockTransactiions
+  List<Transaction> past = mockTransactions
       .where((element) =>
           element.status == TransactionStatus.delivered ||
           element.status == TransactionStatus.cancelled)
@@ -33,6 +33,8 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
         buttonTitle1: 'Find Coffees',
       );
     } else {
+      double listItemWidth =
+          MediaQuery.of(context).size.width - 2 * defaultMargin;
       return ListView(
         children: [
           Column(
@@ -79,7 +81,16 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                     ),
                     Column(
                       children: (selectedIndex == 0 ? inProgress : past)
-                          .map((e) => Text(e.coffee.name))
+                          .map((e) => Padding(
+                                padding: const EdgeInsets.only(
+                                    right: defaultMargin,
+                                    left: defaultMargin,
+                                    bottom: 16),
+                                child: OrderListItem(
+                                  transaction: e,
+                                  itemWidth: listItemWidth,
+                                ),
+                              ))
                           .toList(),
                     ),
                   ],

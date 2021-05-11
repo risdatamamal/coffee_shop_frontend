@@ -1,5 +1,7 @@
 part of 'models.dart';
 
+enum CoffeeType { manualBrew, espressoBased, snack, nonCoffee, tea }
+
 class Coffee extends Equatable {
   final int id;
   final String picturePath;
@@ -8,6 +10,7 @@ class Coffee extends Equatable {
   final String categories;
   final int price;
   final double rate;
+  final List<CoffeeType> types;
 
   Coffee(
       {this.id,
@@ -16,7 +19,8 @@ class Coffee extends Equatable {
       this.description,
       this.categories,
       this.price,
-      this.rate});
+      this.rate,
+      this.types = const []});
 
   @override
   List<Object> get props => [
@@ -36,71 +40,61 @@ List<Coffee> mockCoffees = [
       picturePath:
           "https://www.coffindo.id/images/news/mengenal_lebih_dekat_tentang_kopi_tubruk,_kopi_khas_indonesia-kDmwxSW6c6.jpeg",
       name: "Indonesian Tubruk",
-      description:
-          "Kopi Tubruk adalah minuman kopi khas Indonesia yang dibuat dengan menuangkan air panas ke dalam gelas atau teko yang sudah diisi bubuk kopi. Bisa dengan ditambahkan gula, bisa juga tanpa gula. Di Bali, Kopi Tubruk dikenal dengan nama “Kopi Selem” yang artinya kopi hitam.",
+      description: "Kopi Tubruk adalah minuman kopi khas Indonesia yang dibuat dengan menuangkan air panas ke dalam gelas atau teko yang sudah diisi bubuk kopi. Bisa dengan ditambahkan gula, bisa juga tanpa gula. Di Bali, Kopi Tubruk dikenal dengan nama “Kopi Selem” yang artinya kopi hitam.",
       categories: "Manual Brew",
       price: 18000,
-      rate: 4.2),
+      rate: 4.2,
+      types: [CoffeeType.manualBrew]),
   Coffee(
       id: 2,
       picturePath:
-          "https://statics.indozone.news/content/2019/10/07/ers0M9/t_5d9ae209ae934_700.jpg",
-      name: "Cappucino",
-      description:
-          "Cappucino adalah minuman khas Italia yang dibuat dari espresso dan susu, tetapi referensi lain juga ada yang menyebutkan bahwa kapucino berawal dari biji biji kopi tentara Turki yang tertinggal setelah peperangan yang di pimpin oleh Kara Mustapha Pasha di Wina, Austria melawan tentara gabungan Polandia-Germania.",
-      categories: "Espresso Based",
-      price: 250000,
-      rate: 4.2),
+          "https://www.pegipegi.com/travel/wp-content/uploads/2016/02/Kopi-Vietnam-Drip784-edit-1024x682-e1454495997811.jpg",
+      name: "Vietnam Drip",
+      description: "Kopi Vietnam atau yang dikenal sebagai Cà phê sữa đá adalah minuman kopi dingin yang berasal dari Vietnam dan dibuat dengan cara menyeduh kopi lalu dicampurkan es batu dan susu kental manis.",
+      categories: "Manual Brew",
+      price: 18000,
+      rate: 4.5,
+      types: [CoffeeType.manualBrew]),
   Coffee(
       id: 3,
       picturePath:
-          "https://www.coffindo.id/images/news/mengenal_lebih_dekat_tentang_kopi_tubruk,_kopi_khas_indonesia-kDmwxSW6c6.jpeg",
-      name: "Indonesian Tubruk",
-      description:
-          "Kopi Tubruk adalah minuman kopi khas Indonesia yang dibuat dengan menuangkan air panas ke dalam gelas atau teko yang sudah diisi bubuk kopi. Bisa dengan ditambahkan gula, bisa juga tanpa gula. Di Bali, Kopi Tubruk dikenal dengan nama “Kopi Selem” yang artinya kopi hitam.",
+          "https://www.jakartanotebook.com/images/products/103/1020/45654/2/drohoey-filter-penyaring-kopi-v60-glass-coffee-filter-dripper-1-4-cups-zm00639-black-2.jpg",
+      name: "V60",
+      description: "V60 Hario adalah salah satu alat seduh kopi yang mengguanakan metode pour over. Jika dilihat kasat mata, bentuk dari alat ini mirip dengan cangkir. Alat seduh kopi satu ini memiliki bentuk kerucut pada bagian bawahnya dan akan mengalirkan kopi yang sudah disaring oleh kertas filter.",
       categories: "Manual Brew",
-      price: 180000,
-      rate: 4.2),
+      price: 18000,
+      rate: 3.8,
+      types: [CoffeeType.manualBrew]),
   Coffee(
       id: 4,
       picturePath:
-          "https://www.coffindo.id/images/news/mengenal_lebih_dekat_tentang_kopi_tubruk,_kopi_khas_indonesia-kDmwxSW6c6.jpeg",
-      name: "Indonesian Tubruk",
-      description:
-          "Kopi Tubruk adalah minuman kopi khas Indonesia yang dibuat dengan menuangkan air panas ke dalam gelas atau teko yang sudah diisi bubuk kopi. Bisa dengan ditambahkan gula, bisa juga tanpa gula. Di Bali, Kopi Tubruk dikenal dengan nama “Kopi Selem” yang artinya kopi hitam.",
+          "https://www.jakartanotebook.com/images/products/103/1020/43218/2/aeropress-french-press-coffee-maker-pot-1-liter-t35068-black-2.jpg",
+      name: "French Press Coffee",
+      description: "French Press adalah perangkat menyeduh kopi dipatenkan oleh desainer Italia Attilio Calimani pada tahun 1929. Benda ini biasa disebut sebagai cafetière, сafetière à piston, press pot, coffee press, atau coffee plunger.",
       categories: "Manual Brew",
-      price: 180000,
-      rate: 4.2),
+      price: 18000,
+      rate: 3.0,
+      types: [CoffeeType.manualBrew]),
   Coffee(
       id: 5,
       picturePath:
-          "https://www.coffindo.id/images/news/mengenal_lebih_dekat_tentang_kopi_tubruk,_kopi_khas_indonesia-kDmwxSW6c6.jpeg",
-      name: "Indonesian Tubruk",
-      description:
-          "Kopi Tubruk adalah minuman kopi khas Indonesia yang dibuat dengan menuangkan air panas ke dalam gelas atau teko yang sudah diisi bubuk kopi. Bisa dengan ditambahkan gula, bisa juga tanpa gula. Di Bali, Kopi Tubruk dikenal dengan nama “Kopi Selem” yang artinya kopi hitam.",
+          "http://3.bp.blogspot.com/-21IIdfgImzE/Uu9Ga31N9yI/AAAAAAAACjw/hh_zSbxPX9E/s1600/coffee_siphon.jpg",
+      name: "Syphon",
+      description: "Syphon merupakan salah satu manual brewing yang tersedia sebagai alternatif pennyeduhan kopi secara manual, alat ini tergolong unik karena alat penyeduh ini terlihat sebagai alat labolatorium ketimbang sebagai alat penyeduh kopi manual.  Terdiri atas dua tabung utama yang di hubungkan oleh tabung kaca kapiler dan terdapat api pemanas di bawah.  Tabung kaca paling bawah  Syphon tidak mengasilkan esspresso namun lebih menghasilkan kopi akhir yang balance mengingat air yang di dapat untuk brewing kopi merupakan air hasil suling dari pemanas tabung paling bawah.",
       categories: "Manual Brew",
-      price: 180000,
-      rate: 4.2),
+      price: 30000,
+      rate: 3.5,
+      types: [CoffeeType.manualBrew]),
   Coffee(
       id: 6,
       picturePath:
-          "https://www.coffindo.id/images/news/mengenal_lebih_dekat_tentang_kopi_tubruk,_kopi_khas_indonesia-kDmwxSW6c6.jpeg",
-      name: "Indonesian Tubruk",
-      description:
-          "Kopi Tubruk adalah minuman kopi khas Indonesia yang dibuat dengan menuangkan air panas ke dalam gelas atau teko yang sudah diisi bubuk kopi. Bisa dengan ditambahkan gula, bisa juga tanpa gula. Di Bali, Kopi Tubruk dikenal dengan nama “Kopi Selem” yang artinya kopi hitam.",
+          "https://www.cirellicoffee.com.au/wp-content/uploads/2016/10/1Pc-Dutch-Coffee-font-b-Cold-b-font-font-b-Drip-b-font-Water-font-b.jpg",
+      name: "Japanese Cold Drip",
+      description: "Japanese Iced Coffee tidak memerlukan alat cold brew atau coffee dripper yang seperti layaknya membuat kopi dingin selama ini. Hanya diperlukan sebuah dripper yang biasa dipakai dalam metode pour over V60. Dan saya yakin semua pecinta kopi dengan metode manual brewing pasti memiliki dripper ini. Selain dripper diperlukan juga paper filter karena cara membuat Japanese Iced Coffee hampir mirip dengan pour over yang biasa digunakan.",
       categories: "Manual Brew",
-      price: 180000,
-      rate: 4.2),
-  Coffee(
-      id: 7,
-      picturePath:
-          "https://www.coffindo.id/images/news/mengenal_lebih_dekat_tentang_kopi_tubruk,_kopi_khas_indonesia-kDmwxSW6c6.jpeg",
-      name: "Indonesian Tubruk",
-      description:
-          "Kopi Tubruk adalah minuman kopi khas Indonesia yang dibuat dengan menuangkan air panas ke dalam gelas atau teko yang sudah diisi bubuk kopi. Bisa dengan ditambahkan gula, bisa juga tanpa gula. Di Bali, Kopi Tubruk dikenal dengan nama “Kopi Selem” yang artinya kopi hitam.",
-      categories: "Manual Brew",
-      price: 180000,
-      rate: 4.2),
+      price: 18000,
+      rate: 3.0,
+      types: [CoffeeType.manualBrew]),
 ];
 
 List<Coffee> manualBrew = [

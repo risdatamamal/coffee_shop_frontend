@@ -7,6 +7,8 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int selectedPage = 0;
+  String qrCode = 'Unknown';
+
   PageController pageController = PageController(initialPage: 0);
 
   @override
@@ -35,10 +37,10 @@ class _MainPageState extends State<MainPage> {
                 child: CoffeePage(),
               ),
               Center(
-                child: Text('Scan Me'),
+                child: OrderHistoryPage(),
               ),
               Center(
-                child: OrderHistoryPage(),
+                child: ProfilePage(),
               ),
             ],
           )),
@@ -56,6 +58,28 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
       ),
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(bottom: 60, right: 10),
+        child: FloatingActionButton(
+          onPressed: () => scanQRCode(),
+          child: const Icon(MdiIcons.qrcode),
+          backgroundColor: mainColor,
+        ),
+      ),
     );
+  }
+
+  Future<void> scanQRCode() async {
+    try {
+      final qrCode = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.QR);
+
+      if (!mounted) return;
+      setState(() {
+        this.qrCode = qrCode;
+      });
+    } on PlatformException {
+      qrCode = 'Failed to get platform version.';
+    }
   }
 }

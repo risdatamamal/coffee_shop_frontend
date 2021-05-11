@@ -44,7 +44,8 @@ class CustomBottomNavBar extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 83),
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/ic_scan_me.png'),
+                      image: AssetImage('assets/ic_order' +
+                          ((selectedIndex == 1) ? '.png' : '_normal.png')),
                       fit: BoxFit.contain)),
             ),
           ),
@@ -59,7 +60,7 @@ class CustomBottomNavBar extends StatelessWidget {
               height: 32,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/ic_order' +
+                      image: AssetImage('assets/ic_profile' +
                           ((selectedIndex == 2) ? '.png' : '_normal.png')),
                       fit: BoxFit.contain)),
             ),
