@@ -1,4 +1,4 @@
-# coffee_shop
+# Coffee Shop UI
 
 A new Coffe Application with Flutter
 
